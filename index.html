@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/day_help/" />
     <title>Ежедневник Задач</title>
     <meta name="description" content="Простой и красивый ежедневник для управления вашими задачами" />
     <meta name="author" content="Lovable" />
@@ -15,6 +16,19 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@lovable_dev" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <script type="module">
+      const redirect = sessionStorage.redirect;
+      if (redirect) {
+        delete sessionStorage.redirect;
+        const base = import.meta.env.BASE_URL.replace(/\/+$|$/, "");
+        const normalized = redirect.startsWith("/") ? redirect : `/${redirect}`;
+        const target = base ? `${base}${normalized}` : normalized || "/";
+        const current = window.location.pathname + window.location.search + window.location.hash;
+        if (current !== target) {
+          history.replaceState(null, null, target);
+        }
+      }
+    </script>
   </head>
 
   <body>
