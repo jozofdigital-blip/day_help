@@ -20,11 +20,10 @@
       const redirect = sessionStorage.redirect;
       if (redirect) {
         delete sessionStorage.redirect;
-        const base = import.meta.env.BASE_URL.replace(/\/+$|$/, "");
+        const base = import.meta.env.BASE_URL.replace(/\/$/, "");
         const normalized = redirect.startsWith("/") ? redirect : `/${redirect}`;
-        const target = base ? `${base}${normalized}` : normalized || "/";
-        const current = window.location.pathname + window.location.search + window.location.hash;
-        if (current !== target) {
+        const target = `${base}${normalized}` || "/";
+        if (window.location.pathname + window.location.search !== target) {
           history.replaceState(null, null, target);
         }
       }

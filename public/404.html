@@ -5,27 +5,14 @@
     <title>Redirecting…</title>
     <script>
       (function () {
-        var path = window.location.pathname;
-        var searchHash = window.location.search + window.location.hash;
-        var segments = path.split("/").filter(Boolean);
-        var base = "/";
-
-        if (window.location.hostname.endsWith(".github.io") && segments.length) {
-          base = "/" + segments[0] + "/";
-        }
-
-        var redirectPath = path;
-        if (base !== "/" && redirectPath.startsWith(base)) {
-          redirectPath = redirectPath.slice(base.length);
-        }
-
-        var normalized = redirectPath.replace(/^\/+/, "");
-        normalized = normalized ? "/" + normalized : "/";
-
-        sessionStorage.redirect = normalized + searchHash;
-
-        if (window.location.pathname !== base) {
-          window.location.replace(base);
+        var fullPath = window.location.pathname + window.location.search + window.location.hash;
+        sessionStorage.redirect = fullPath;
+        var segments = window.location.pathname.split("/").filter(Boolean);
+        var isGitHubPages = window.location.hostname.endsWith(".github.io");
+        var base = isGitHubPages && segments.length ? "/" + segments[0] : "";
+        var target = base ? base + "/" : "/";
+        if (window.location.pathname !== target) {
+          window.location.replace(target);
         }
       })();
     </script>
