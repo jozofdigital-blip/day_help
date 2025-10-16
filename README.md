@@ -66,13 +66,11 @@ Simply open [Lovable](https://lovable.dev/projects/c67126f2-0840-4136-8597-d323d
 
 ### Deploying to GitHub Pages
 
-This project ships with an automated GitHub Actions workflow that builds the Vite app and publishes the compiled assets directly to GitHub Pages. To get a working production site (and avoid the "Failed to load module script" error from loading raw `.tsx` files), configure Pages to deploy from GitHub Actions:
+This repository now includes an automated GitHub Actions workflow that builds the app with Vite and publishes the compiled files to the `gh-pages` branch. To enable the live site:
 
-1. Push the updated workflow to your repository and open the **Actions** tab to confirm the "Deploy site to GitHub Pages" workflow completes successfully.
-2. Navigate to **Settings → Pages** and set **Source** to **GitHub Actions**.
-3. Wait for the workflow run to finish; the live site URL displayed in the workflow summary will now serve the built bundle with the correct MIME types.
-
-Every new commit to `main` will rebuild and redeploy automatically, so you never have to check in files from the `dist/` folder manually.
+1. Open your repository settings in GitHub and navigate to **Pages**.
+2. Set the deployment source to **Deploy from a branch** and choose the `gh-pages` branch with the `/` (root) folder.
+3. Save the configuration. Every push to `main` will trigger the workflow and refresh the published site automatically.
 
 ## Can I connect a custom domain to my Lovable project?
 
