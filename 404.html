@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting…</title>
+    <script>
+      (function () {
+        var fullPath = window.location.pathname + window.location.search + window.location.hash;
+        sessionStorage.redirect = fullPath;
+        var segments = window.location.pathname.split("/").filter(Boolean);
+        var isGitHubPages = window.location.hostname.endsWith(".github.io");
+        var base = isGitHubPages && segments.length ? "/" + segments[0] : "";
+        var target = base ? base + "/" : "/";
+        if (window.location.pathname !== target) {
+          window.location.replace(target);
+        }
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

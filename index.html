@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ежедневник Задач</title>
+    <meta name="description" content="Простой и красивый ежедневник для управления вашими задачами" />
+    <meta name="author" content="Lovable" />
+
+    <meta property="og:title" content="Ежедневник Задач" />
+    <meta property="og:description" content="Простой и красивый ежедневник для управления вашими задачами" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@lovable_dev" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <script>
+      (function () {
+        const redirect = sessionStorage.redirect;
+        if (!redirect) return;
+
+        delete sessionStorage.redirect;
+
+        const { pathname } = window.location;
+        const basePath = pathname.endsWith("/") ? pathname : `${pathname}/`;
+        const normalizedBase = basePath.replace(/\/+$/, "");
+
+        const redirectPath = redirect.startsWith("/") ? redirect : `/${redirect}`;
+        const relativePath = redirectPath.startsWith(normalizedBase)
+          ? redirectPath.slice(normalizedBase.length) || "/"
+          : redirectPath;
+
+        const normalizedRelative = relativePath.startsWith("/")
+          ? relativePath
+          : `/${relativePath}`;
+        const sanitizedRelative = normalizedRelative.replace(/^\/+/g, "");
+        const hashTarget = `#/${sanitizedRelative}`.replace(/\/+$/, "/");
+
+        if (pathname !== basePath) {
+          history.replaceState(null, null, basePath);
+        }
+
+        if (window.location.hash !== hashTarget) {
+          window.location.hash = hashTarget;
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="./assets/index-Bxou9h2b.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CBK8mncZ.css">
+  </head>
+
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
