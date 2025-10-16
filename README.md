@@ -64,6 +64,14 @@ This project is built with:
 
 Simply open [Lovable](https://lovable.dev/projects/c67126f2-0840-4136-8597-d323d890de00) and click on Share -> Publish.
 
+### Deploying to GitHub Pages
+
+This repository now includes an automated GitHub Actions workflow that builds the app with Vite and publishes the compiled files to the `gh-pages` branch. To enable the live site:
+
+1. Open your repository settings in GitHub and navigate to **Pages**.
+2. Set the deployment source to **Deploy from a branch** and choose the `gh-pages` branch with the `/` (root) folder.
+3. Save the configuration. Every push to `main` will trigger the workflow and refresh the published site automatically.
+
 ## Can I connect a custom domain to my Lovable project?
 
 Yes, you can!
